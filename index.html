@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mehdi Fatahiye — Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #ffffff; --off-white: #f8f7f5; --light: #eeece9;
+      --mid: #c8c4bc; --text-light: #9a9590; --text: #3a3832;
+      --dark: #1a1916; --accent: #8a7355;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+    body.fa { font-family: 'Vazirmatn', sans-serif; direction: rtl; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--light); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .lang-btn { background: none; border: 1px solid var(--mid); color: var(--text); font-size: 0.68rem; letter-spacing: 0.1em; padding: 5px 14px; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* HERO */
+    .hero { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+    .hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); margin-bottom: 32px; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.05; color: var(--dark); margin-bottom: 28px; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-desc { font-size: 0.88rem; color: var(--text-light); max-width: 360px; line-height: 1.9; margin-bottom: 44px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark); border-bottom: 1px solid var(--dark); padding-bottom: 4px; transition: all 0.2s; width: fit-content; }
+    .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+    .hero-cta::after { content: '→'; }
+    .hero-image { position: relative; overflow: hidden; }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 8s ease; }
+    .hero-image:hover img { transform: scale(1.04); }
+
+    /* SECTIONS */
+    section { padding: 120px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .section-label { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; color: var(--dark); margin-bottom: 48px; }
+
+    /* PORTFOLIO */
+    .portfolio { background: var(--off-white); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--light); }
+    .project-card { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; background: var(--light); }
+    .project-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .project-card:hover img { transform: scale(1.08); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,25,22,0.72) 0%, transparent 55%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 24px 28px; }
+    .project-card:hover .project-overlay { opacity: 1; }
+    .project-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: white; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img { aspect-ratio: 3/4; overflow: hidden; background: var(--light); }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { font-size: 0.92rem; line-height: 1.95; color: var(--text); margin-bottom: 18px; }
+    .expertise-list { margin-top: 36px; border-top: 1px solid var(--light); }
+    .expertise-item { padding: 18px 0; border-bottom: 1px solid var(--light); }
+    .expertise-item h4 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark); margin-bottom: 5px; font-weight: 400; }
+    .expertise-item p { font-size: 0.82rem; color: var(--text-light); margin: 0; }
+
+    /* SERVICES */
+    .services { background: var(--dark); }
+    .services .section-label { color: rgba(255,255,255,0.4); }
+    .services .section-title { color: white; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); }
+    .service-card { background: var(--dark); padding: 48px 40px; transition: background 0.3s; }
+    .service-card:hover { background: #242320; }
+    .service-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: rgba(255,255,255,0.07); line-height: 1; margin-bottom: 22px; }
+    .service-title { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: white; font-weight: 400; margin-bottom: 14px; }
+    .service-desc { font-size: 0.83rem; color: var(--text-light); line-height: 1.85; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info p { font-size: 0.9rem; color: var(--text-light); line-height: 1.9; margin-bottom: 36px; }
+    .contact-detail { display: flex; flex-direction: column; gap: 4px; margin-bottom: 22px; }
+    .contact-detail span:first-child { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); }
+    .contact-detail a, .contact-detail span:last-child { font-size: 0.9rem; color: var(--dark); text-decoration: none; }
+    .contact-detail a:hover { color: var(--accent); }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); }
+    .form-group input, .form-group textarea { border: none; border-bottom: 1px solid var(--light); padding: 10px 0; font-size: 0.9rem; font-family: inherit; font-weight: 300; color: var(--dark); background: transparent; outline: none; transition: border-color 0.2s; resize: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-submit { background: var(--dark); color: white; border: none; padding: 16px 40px; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 300; transition: background 0.2s; width: fit-content; margin-top: 8px; }
+    .form-submit:hover { background: var(--accent); }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 200; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lb-inner { position: relative; max-width: 92vw; }
+    .lb-inner img { max-width: 90vw; max-height: 85vh; object-fit: contain; display: block; }
+    .lb-close { position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 1.4rem; cursor: pointer; }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 1px solid rgba(255,255,255,0.25); color: white; width: 44px; height: 44px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
+    .lb-nav:hover { border-color: white; }
+    .lb-prev { left: -60px; }
+    .lb-next { right: -60px; }
+    .lb-caption { text-align: center; color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 14px; }
+
+    /* FOOTER */
+    footer { background: var(--off-white); padding: 56px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--light); }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark); }
+    .footer-copy { font-size: 0.72rem; color: var(--text-light); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .hero { grid-template-columns: 1fr; height: auto; }
+      .hero-text { padding: 96px 24px 48px; }
+      .hero-image { height: 65vw; }
+      .container { padding: 0 24px; }
+      section { padding: 72px 0; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 36px 24px; }
+      .lb-prev { left: -16px; } .lb-next { right: -16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+  <img src="images/aa.jpg" alt="Palette & Palazzo" style="height:40px;width:auto;display:block;" />
+</a>
+  <ul class="nav-links">
+    <li><a href="#portfolio" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a></li>
+    <li><a href="#about" data-en="About" data-fa="درباره من">About</a></li>
+    <li><a href="#services" data-en="Services" data-fa="خدمات">Services</a></li>
+    <li><a href="#contact" data-en="Contact" data-fa="تماس">Contact</a></li>
+    <li><button class="lang-btn" onclick="toggleLang()">فارسی</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow" data-en="Architect · Tehran" data-fa="معمار · تهران">Architect · Tehran</p>
+    <h1 class="hero-title">
+      <span data-en="Architecture<br>that <em>speaks</em><br>to the soul" data-fa="معماری که<br>با روح <em>سخن</em><br>می‌گوید">Architecture<br>that <em>speaks</em><br>to the soul</span>
+    </h1>
+    <p class="hero-desc" data-en="Experienced architect with a passion for creating beautiful, functional spaces — from residential homes to commercial buildings." data-fa="معمار با تجربه، با علاقه به ایجاد فضاهای زیبا و کاربردی — از خانه‌های مسکونی تا ساختمان‌های تجاری.">Experienced architect with a passion for creating beautiful, functional spaces — from residential homes to commercial buildings.</p>
+    <a href="#portfolio" class="hero-cta" data-en="View Portfolio" data-fa="مشاهده نمونه کارها">View Portfolio</a>
+  </div>
+  <div class="hero-image">
+    <img src="images/prof-3.jpg" alt="Architecture" />
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <p class="section-label reveal" data-en="Selected Works" data-fa="نمونه کارهای منتخب">Selected Works</p>
+    <h2 class="section-title reveal" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="project-card reveal" onclick="openGallery('atisaz')">
+      <img src="images/1.jpg" alt="Atisaz" />
+      <div class="project-overlay"><span class="project-name" data-en="Atisaz" data-fa="آتی‌ساز">Atisaz</span></div>
+    </div>
+    <div class="project-card reveal" onclick="openGallery('ekbatan')">
+      <img src="images/7a.jpg" alt="Ekbatan" />
+      <div class="project-overlay"><span class="project-name" data-en="Ekbatan" data-fa="اکباتان">Ekbatan</span></div>
+    </div>
+    <div class="project-card reveal" onclick="openGallery('chitgar')">
+      <img src="images/1a.jpg" alt="Chitgar" />
+      <div class="project-overlay"><span class="project-name" data-en="Chitgar" data-fa="چیتگر">Chitgar</span></div>
+    </div>
+    <div class="project-card reveal" onclick="openGallery('parkway')">
+      <img src="images/6.jpg" alt="Parkway" />
+      <div class="project-overlay"><span class="project-name" data-en="Parkway" data-fa="پارک‌وی">Parkway</span></div>
+    </div>
+    <div class="project-card reveal" onclick="openGallery('ava')">
+      <img src="images/9a-3.jpg" alt="Ava General" />
+      <div class="project-overlay"><span class="project-name" data-en="Ava General" data-fa="آوا جنرال">Ava General</span></div>
+    </div>
+    <div class="project-card reveal" onclick="openGallery('daroos')">
+      <img src="images/8.jpg" alt="Daroos" />
+      <div class="project-overlay"><span class="project-name" data-en="Daroos" data-fa="دروس">Daroos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="images/about-bg.jpg" alt="Mehdi Fatahiye" />
+      </div>
+      <div class="reveal">
+        <p class="section-label" data-en="About Me" data-fa="درباره من">About Me</p>
+        <h2 class="section-title" data-en="Mehdi Fatahiye" data-fa="مهدی فتاحیه">Mehdi Fatahiye</h2>
+        <p data-en="I am an experienced architect with a passion for creating beautiful and functional spaces. I have worked on a wide range of projects, from residential homes to commercial buildings, with a strong understanding of both the aesthetic and practical considerations involved in design." data-fa="من یک معمار با تجربه هستم و علاقه زیادی به ایجاد فضاهای زیبا و کاربردی دارم. روی طیف وسیعی از پروژه‌ها کار کرده‌ام، از خانه‌های مسکونی تا ساختمان‌های تجاری، با درک عمیق از ملاحظات زیبایی‌شناختی و عملی در طراحی.">I am an experienced architect with a passion for creating beautiful and functional spaces. I have worked on a wide range of projects, from residential homes to commercial buildings, with a strong understanding of both the aesthetic and practical considerations involved in design.</p>
+        <p data-en="I prioritize collaboration and communication with my clients, working closely with them to understand their vision and bring it to life." data-fa="همکاری و ارتباط با مشتریانم را در اولویت قرار می‌دهم و از نزدیک با آنها کار می‌کنم تا دیدگاه آنها را درک کرده و آن را زنده کنم.">I prioritize collaboration and communication with my clients, working closely with them to understand their vision and bring it to life.</p>
+        <div class="expertise-list">
+          <div class="expertise-item">
+            <h4 data-en="Residential Design" data-fa="طراحی مسکونی">Residential Design</h4>
+            <p data-en="Custom homes and renovations that blend form and function." data-fa="خانه‌های سفارشی و بازسازی که فرم و عملکرد را ترکیب می‌کنند.">Custom homes and renovations that blend form and function.</p>
+          </div>
+          <div class="expertise-item">
+            <h4 data-en="Commercial Design" data-fa="طراحی تجاری">Commercial Design</h4>
+            <p data-en="Efficient and sustainable solutions for offices, retail, and hospitality." data-fa="راه‌حل‌های کارآمد و پایدار برای دفاتر، خرده‌فروشی و مهمان‌نوازی.">Efficient and sustainable solutions for offices, retail, and hospitality.</p>
+          </div>
+          <div class="expertise-item">
+            <h4 data-en="Furniture Design" data-fa="طراحی مبلمان">Furniture Design</h4>
+            <p data-en="Each piece inspired by the intersection of art, architecture, and design." data-fa="هر قطعه الهام گرفته از تلاقی هنر، معماری و طراحی.">Each piece inspired by the intersection of art, architecture, and design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <p class="section-label reveal" data-en="What We Offer" data-fa="خدمات ما">What We Offer</p>
+    <h2 class="section-title reveal" data-en="Our Services" data-fa="خدمات ما">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <h3 class="service-title" data-en="Specialized Consultancy" data-fa="مشاوره تخصصی">Specialized Consultancy</h3>
+        <p class="service-desc" data-en="Feasibility studies, concept design, building code analysis, and cost estimation — customized solutions for your unique needs." data-fa="مطالعات امکان‌سنجی، طراحی مفهومی، تجزیه و تحلیل کد ساختمان و برآورد هزینه — راه‌حل‌های سفارشی.">Feasibility studies, concept design, building code analysis, and cost estimation — customized solutions for your unique needs.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <h3 class="service-title" data-en="Innovative Design Solutions" data-fa="راه‌حل‌های طراحی نوآورانه">Innovative Design Solutions</h3>
+        <p class="service-desc" data-en="Cutting-edge technology, sustainable practices, and creative thinking to optimize building performance and minimize environmental impact." data-fa="فناوری پیشرفته، روش‌های پایدار و تفکر خلاقانه برای بهینه‌سازی عملکرد ساختمان.">Cutting-edge technology, sustainable practices, and creative thinking to optimize building performance and minimize environmental impact.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <h3 class="service-title" data-en="Project Management" data-fa="مدیریت پروژه">Project Management</h3>
+        <p class="service-desc" data-en="Leading teams and delivering projects on time and within budget, using Agile and Waterfall methodologies across different industries." data-fa="رهبری تیم‌ها و تحویل پروژه‌ها به موقع و در چارچوب بودجه، با روش‌های چابک و آبشاری.">Leading teams and delivering projects on time and within budget, using Agile and Waterfall methodologies across different industries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal" data-en="Get in Touch" data-fa="ارتباط با ما">Get in Touch</p>
+    <h2 class="section-title reveal" data-en="Contact" data-fa="تماس">Contact</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p data-en="Reach out to Palette and Palazzo for all your architectural needs. Our team is ready to assist you with any inquiries." data-fa="برای تمام نیازهای معماری خود با پالت و پالاتزو تماس بگیرید. تیم ما آماده پاسخگویی به سوالات شماست.">Reach out to Palette and Palazzo for all your architectural needs. Our team is ready to assist you with any inquiries.</p>
+        <div class="contact-detail">
+          <span data-en="Email" data-fa="ایمیل">Email</span>
+          <a href="mailto:mehdi.fatahiye@outlook.com">mehdi.fatahiye@outlook.com</a>
+        </div>
+        <div class="contact-detail">
+          <span data-en="Website" data-fa="وبسایت">Website</span>
+          <a href="https://mehdifatahiye.com">mehdifatahiye.com</a>
+        </div>
+        <div class="contact-detail">
+          <span data-en="Location" data-fa="موقعیت">Location</span>
+          <span data-en="Tehran, Iran" data-fa="تهران، ایران">Tehran, Iran</span>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-group">
+          <label data-en="Your Name" data-fa="نام شما">Your Name</label>
+          <input type="text" />
+        </div>
+        <div class="form-group">
+          <label data-en="Email Address" data-fa="آدرس ایمیل">Email Address</label>
+          <input type="email" />
+        </div>
+        <div class="form-group">
+          <label data-en="Message" data-fa="پیام">Message</label>
+          <textarea rows="5"></textarea>
+        </div>
+        <button class="form-submit" data-en="Send Message →" data-fa="ارسال پیام →">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+  <img src="images/aa.jpg" alt="Palette & Palazzo" style="height:36px;width:auto;" />
+</div>
+  <div class="footer-copy" data-en="© 2025 Mehdi Fatahiye. All rights reserved." data-fa="© ۱۴۰۴ مهدی فتاحیه. تمامی حقوق محفوظ است.">© 2025 Mehdi Fatahiye. All rights reserved.</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLBBtn()">✕</button>
+    <button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button>
+    <img id="lb-img" src="" alt="" />
+    <button class="lb-nav lb-next" onclick="navLB(1)">›</button>
+    <div class="lb-caption" id="lb-cap"></div>
+  </div>
+</div>
+
+<script>
+let lang = 'en';
+function toggleLang() {
+  lang = lang === 'en' ? 'fa' : 'en';
+  const fa = lang === 'fa';
+  document.body.classList.toggle('fa', fa);
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', fa ? 'rtl' : 'ltr');
+  document.querySelector('.lang-btn').textContent = fa ? 'English' : 'فارسی';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerHTML = el.getAttribute(fa ? 'data-fa' : 'data-en');
+  });
+}
+
+const galleries = {
+  atisaz: { en:'Atisaz', fa:'آتی‌ساز', imgs:['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/1a-3.jpg','images/10.jpg','images/10a.jpg','images/10aaa.jpg'] },
+  ekbatan: { en:'Ekbatan', fa:'اکباتان', imgs:['images/7a.jpg','images/7a-1.jpg','images/7a-a.jpg','images/5a.jpg','images/5a-3.jpg','images/5a-a.jpg','images/11a.jpg','images/11a-3.jpg','images/11a-a.jpg'] },
+  chitgar: { en:'Chitgar', fa:'چیتگر', imgs:['images/1a.jpg','images/2a.jpg','images/3a.jpg','images/4a.jpg','images/1a-a.jpg','images/4a-a.jpg','images/12.jpg','images/12a.jpg'] },
+  parkway: { en:'Parkway', fa:'پارک‌وی', imgs:['images/6.jpg','images/6a.jpg','images/6a-3.jpg','images/6aaaa.jpg','images/14.jpg','images/14a.jpg','images/14aaaa.jpg','images/15.jpg','images/15a.jpg','images/15aaaa.jpg','images/15a-Copy.jpg'] },
+  ava: { en:'Ava General', fa:'آوا جنرال', imgs:['images/9a-3.jpg','images/9a.jpg','images/9.jpg','images/9a-4.jpg','images/9aaaa.jpg','images/25a.jpg','images/26a.jpg','images/23a.jpg','images/8a-3.jpg','images/8a.jpg','images/8aaaa.jpg'] },
+  daroos: { en:'Daroos', fa:'دروس', imgs:['images/8.jpg','images/7.jpg','images/3-1.jpg','images/3a-a.jpg','images/3a-1.jpg','images/13.jpg','images/13a.jpg','images/13aaa.jpg','images/13a-Copy.jpg','images/16.jpg','images/16aaa.jpg','images/17a.jpg','images/17aaa.jpg','images/18.jpg','images/18a.jpg','images/20.jpg','images/20a-a.jpg','images/20aaa.jpg'] },
+};
+
+let curG = null, curI = 0;
+function openGallery(k) {
+  curG = galleries[k]; curI = 0; showImg();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function showImg() {
+  document.getElementById('lb-img').src = curG.imgs[curI];
+  const name = lang === 'fa' ? curG.fa : curG.en;
+  document.getElementById('lb-cap').textContent = name + '  ' + (curI+1) + ' / ' + curG.imgs.length;
+}
+function navLB(d) { curI = (curI+d+curG.imgs.length)%curG.imgs.length; showImg(); }
+function closeLBBtn() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+function closeLB(e) { if(e.target===document.getElementById('lightbox')) closeLBBtn(); }
+document.addEventListener('keydown', e => {
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key==='ArrowRight') navLB(1);
+  if(e.key==='ArrowLeft') navLB(-1);
+  if(e.key==='Escape') closeLBBtn();
+});
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
