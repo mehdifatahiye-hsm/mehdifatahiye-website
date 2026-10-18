@@ -167,27 +167,27 @@
   </div>
   <div class="portfolio-grid">
     <div class="project-card reveal" onclick="openGallery('atisaz')">
-      <img src="images/1.jpg" alt="Atisaz" />
+      <img src="images/atisaz/1.jpg" alt="Atisaz" />
       <div class="project-overlay"><span class="project-name" data-en="Atisaz" data-fa="آتی‌ساز">Atisaz</span></div>
     </div>
     <div class="project-card reveal" onclick="openGallery('ekbatan')">
-      <img src="images/7a.jpg" alt="Ekbatan" />
+      <img src="images/ekbatan/Ekbatan (1).jpg" alt="Ekbatan" />
       <div class="project-overlay"><span class="project-name" data-en="Ekbatan" data-fa="اکباتان">Ekbatan</span></div>
     </div>
     <div class="project-card reveal" onclick="openGallery('chitgar')">
-      <img src="images/1a.jpg" alt="Chitgar" />
+      <img src="images/chitgar/Chitgar (1).jpg" alt="Chitgar" />
       <div class="project-overlay"><span class="project-name" data-en="Chitgar" data-fa="چیتگر">Chitgar</span></div>
     </div>
     <div class="project-card reveal" onclick="openGallery('parkway')">
-      <img src="images/6.jpg" alt="Parkway" />
+      <img src="images/parkway/Parkway (1).jpg" alt="Parkway" />
       <div class="project-overlay"><span class="project-name" data-en="Parkway" data-fa="پارک‌وی">Parkway</span></div>
     </div>
     <div class="project-card reveal" onclick="openGallery('ava')">
-      <img src="images/9a-3.jpg" alt="Ava General" />
+      <img src="images/avageneral/Avageneral (1).jpg" alt="Ava General" />
       <div class="project-overlay"><span class="project-name" data-en="Ava General" data-fa="آوا جنرال">Ava General</span></div>
     </div>
     <div class="project-card reveal" onclick="openGallery('daroos')">
-      <img src="images/8.jpg" alt="Daroos" />
+      <img src="images/daroos/IMG_5858.jpg" alt="Daroos" />
       <div class="project-overlay"><span class="project-name" data-en="Daroos" data-fa="دروس">Daroos</span></div>
     </div>
   </div>
@@ -325,65 +325,74 @@ const galleries = {
   atisaz: {
     en: 'Atisaz',
     fa: 'آتی‌ساز',
-    imgs: [
-      'images/atisaz/1.jpg',
-      'images/atisaz/2.jpg',
-      'images/atisaz/3.jpg',
-      'images/atisaz/4.jpg',
-      'images/atisaz/5.jpg',
-      'images/atisaz/6.jpg',
-      'images/atisaz/7.jpg',
-      'images/atisaz/8.jpg',
-      'images/atisaz/9.jpg',
-      'images/atisaz/10.jpg',
-      'images/atisaz/11.jpg',
-      'images/atisaz/12.jpg',
-      'images/atisaz/13.jpg'
-    ]
+    imgs: Array.from({length: 13}, (_, i) =>
+      `images/atisaz/${i + 1}.jpg`
+    )
   },
+
   ekbatan: {
     en: 'Ekbatan',
     fa: 'اکباتان',
-    imgs: [
-      'images/ekbatan/1.jpg',
-      'images/ekbatan/2.jpg',
-      'images/ekbatan/3.jpg'
-    ]
+    imgs: Array.from({length: 16}, (_, i) =>
+      `images/ekbatan/Ekbatan (${i + 1}).jpg`
+    )
   },
+
   chitgar: {
     en: 'Chitgar',
     fa: 'چیتگر',
     imgs: [
-      'images/chitgar/1.jpg',
-      'images/chitgar/2.jpg',
-      'images/chitgar/3.jpg'
+      'images/chitgar/Chitgar (1).jpg',
+      'images/chitgar/Chitgar (1).jpeg',
+      ...Array.from({length: 68}, (_, i) =>
+        `images/chitgar/Chitgar (${i + 2}).jpg`
+      )
     ]
   },
+
   parkway: {
     en: 'Parkway',
     fa: 'پارک‌وی',
-    imgs: [
-      'images/parkway/1.jpg',
-      'images/parkway/2.jpg',
-      'images/parkway/3.jpg'
-    ]
+    imgs: Array.from({length: 22}, (_, i) =>
+      `images/parkway/Parkway (${i + 1}).jpg`
+    )
   },
+
   ava: {
     en: 'Ava General',
     fa: 'آوا جنرال',
-    imgs: [
-      'images/avageneral/1.jpg',
-      'images/avageneral/2.jpg',
-      'images/avageneral/3.jpg'
-    ]
+    imgs: Array.from({length: 26}, (_, i) =>
+      `images/avageneral/Avageneral (${i + 1}).jpg`
+    )
   },
+
   daroos: {
     en: 'Daroos',
     fa: 'دروس',
     imgs: [
-      'images/daroos/1.jpg',
-      'images/daroos/2.jpg',
-      'images/daroos/3.jpg'
+      'images/daroos/IMG_5858.jpg',
+      'images/daroos/IMG_6104.jpg',
+      'images/daroos/IMG_6109.jpg',
+      'images/daroos/IMG_6179.jpg',
+      'images/daroos/IMG_6182.jpg',
+      'images/daroos/IMG_6185.jpg',
+      'images/daroos/IMG_6207.jpg',
+      'images/daroos/IMG_6223.jpg',
+      'images/daroos/IMG_6243.jpg',
+      'images/daroos/IMG_6268.jpg',
+      'images/daroos/IMG_6275.jpg',
+      'images/daroos/IMG_6276.jpg',
+      'images/daroos/IMG_6282.jpg',
+      'images/daroos/IMG_6299.jpg',
+      'images/daroos/IMG_6318.jpg',
+      'images/daroos/IMG_6324.jpg',
+      'images/daroos/IMG_6330.jpg',
+      'images/daroos/IMG_6334.jpg',
+      'images/daroos/IMG_6344.jpg',
+      'images/daroos/IMG_6380.jpg',
+      'images/daroos/IMG_6411.jpg',
+      'images/daroos/IMG_6415.jpg',
+      'images/daroos/IMG_6415_1.jpg'
     ]
   }
 };
@@ -416,3 +425,4 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
+
