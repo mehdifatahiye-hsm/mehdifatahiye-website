@@ -174,16 +174,16 @@
       <img src="images/ekbatan/Ekbatan (1).jpg" alt="Ekbatan" />
       <div class="project-overlay"><span class="project-name" data-en="Ekbatan" data-fa="اکباتان">Ekbatan</span></div>
     </div>
-    <div class="project-card reveal" onclick="openGallery('chitgar')">
-    <img
-<img
-  src="images/chitgar/Chitgar%20(1).jpg"
-  alt="Chitgar"
-  onerror="this.onerror=null; this.src='images/chitgar/Chitgar%20(3).jpg';"
-  style="width:100%;height:100%;object-fit:cover;"
-/>
-      <div class="project-overlay"><span class="project-name" data-en="Chitgar" data-fa="چیتگر">Chitgar</span></div>
-    </div>
+   <div class="project-card reveal" onclick="openGallery('chitgar')">
+  <img
+    src="images/chitgar/Chitgar%20(1).jpg"
+    alt="Chitgar"
+    onerror="this.onerror=null; this.src='images/chitgar/Chitgar%20(2).jpg';"
+  />
+  <div class="project-overlay">
+    <span class="project-name" data-en="Chitgar" data-fa="چیتگر">Chitgar</span>
+  </div>
+</div>
     <div class="project-card reveal" onclick="openGallery('parkway')">
       <img src="images/parkway/Parkway (1).jpg" alt="Parkway" />
       <div class="project-overlay"><span class="project-name" data-en="Parkway" data-fa="پارک‌وی">Parkway</span></div>
@@ -347,11 +347,9 @@ const galleries = {
 chitgar: {
   en: 'Chitgar',
   fa: 'چیتگر',
-imgs: [
-  'images/chitgar/Chitgar (2).jpg',
-  'images/chitgar/Chitgar (3).jpg',
-  'images/chitgar/Chitgar (4).jpg'
-],
+  imgs: Array.from({ length: 69 }, (_, i) =>
+    `images/chitgar/Chitgar%20(${i + 1}).jpg`
+  )
 },
 
   parkway: {
