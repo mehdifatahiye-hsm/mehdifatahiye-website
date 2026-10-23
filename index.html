@@ -142,23 +142,23 @@
   </div>
   <div class="project-grid">
     <article class="project-card" role="button" tabindex="0" data-gallery="atisaz" aria-label="Open Atisaz project gallery">
-      <div class="project-visual"><img src="images/atisaz/1.jpg" alt="Atisaz architectural project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">ATISAZ</span></div>
+      <div class="project-visual"><img src="https://raw.githubusercontent.com/mehdifatahiye-hsm/mehdifatahiye-website/main/images/atisaz/1.jpg" alt="Atisaz architectural project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">ATISAZ</span></div>
       <div class="project-info"><span class="project-number">01 / RESIDENTIAL</span><h3 data-en="Atisaz" data-fa="آتی‌ساز">Atisaz</h3><p data-en="Residential architecture and interior project." data-fa="پروژه معماری مسکونی و طراحی داخلی.">Residential architecture and interior project.</p></div>
     </article>
     <article class="project-card" role="button" tabindex="0" data-gallery="ekbatan" aria-label="Open Ekbatan project gallery">
-      <div class="project-visual"><img src="images/ekbatan/Ekbatan%20(1).jpg" alt="Ekbatan architectural project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">EKBATAN</span></div>
+      <div class="project-visual"><img src="https://raw.githubusercontent.com/mehdifatahiye-hsm/mehdifatahiye-website/main/images/ekbatan/Ekbatan%20(1).jpg" alt="Ekbatan architectural project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">EKBATAN</span></div>
       <div class="project-info"><span class="project-number">02 / RESIDENTIAL</span><h3 data-en="Ekbatan" data-fa="اکباتان">Ekbatan</h3><p data-en="A residential project with a focus on practical planning." data-fa="پروژه مسکونی با تمرکز بر برنامه‌ریزی کاربردی فضا.">A residential project with a focus on practical planning.</p></div>
     </article>
     <article class="project-card" role="button" tabindex="0" data-gallery="parkway" aria-label="Open Parkway project gallery">
-      <div class="project-visual"><img src="images/parkway/Parkway%20(1).jpg" alt="Parkway architectural project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">PARKWAY</span></div>
+      <div class="project-visual"><img src="https://raw.githubusercontent.com/mehdifatahiye-hsm/mehdifatahiye-website/main/images/parkway/Parkway%20(1).jpg" alt="Parkway architectural project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">PARKWAY</span></div>
       <div class="project-info"><span class="project-number">03 / INTERIORS</span><h3 data-en="Parkway" data-fa="پارک‌وی">Parkway</h3><p data-en="Interior architecture and carefully coordinated details." data-fa="معماری داخلی و هماهنگی دقیق جزئیات اجرایی.">Interior architecture and carefully coordinated details.</p></div>
     </article>
     <article class="project-card" role="button" tabindex="0" data-gallery="ava" aria-label="Open Ava General project gallery">
-      <div class="project-visual"><img src="images/avageneral/Avageneral%20(1).jpg" alt="Ava General project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">AVA GENERAL</span></div>
+      <div class="project-visual"><img src="https://raw.githubusercontent.com/mehdifatahiye-hsm/mehdifatahiye-website/main/images/avageneral/Avageneral%20(1).jpg" alt="Ava General project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">AVA GENERAL</span></div>
       <div class="project-info"><span class="project-number">04 / COMMERCIAL</span><h3 data-en="Ava General" data-fa="آوا جنرال">Ava General</h3><p data-en="Commercial project focused on function and user experience." data-fa="پروژه تجاری با تمرکز بر عملکرد و تجربه کاربران.">Commercial project focused on function and user experience.</p></div>
     </article>
     <article class="project-card" role="button" tabindex="0" data-gallery="daroos" aria-label="Open Daroos project gallery">
-      <div class="project-visual"><img src="images/daroos/IMG_5858.jpg" alt="Daroos residential project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">DAROOS</span></div>
+      <div class="project-visual"><img src="https://raw.githubusercontent.com/mehdifatahiye-hsm/mehdifatahiye-website/main/images/daroos/IMG_5858.jpg" alt="Daroos residential project" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="visual-mark" style="display:none">DAROOS</span></div>
       <div class="project-info"><span class="project-number">05 / RESIDENTIAL</span><h3 data-en="Daroos" data-fa="دروس">Daroos</h3><p data-en="Residential design and renovation work." data-fa="طراحی مسکونی و عملیات بازسازی.">Residential design and renovation work.</p></div>
     </article>
   </div>
@@ -209,6 +209,8 @@
 </div>
 <footer><span>© Mehdi Fatahiye — Architect</span><span data-en="Architecture · Interiors · Construction" data-fa="معماری · طراحی داخلی · اجرا">Architecture · Interiors · Construction</span></footer>
 <script>
+  const imageBase = 'https://raw.githubusercontent.com/mehdifatahiye-hsm/mehdifatahiye-website/main/';
+  const imageUrl = path => imageBase + path.split('/').map(part => encodeURIComponent(part)).join('/');
   const projectGalleries = {
     atisaz: { en: 'Atisaz', fa: 'آتی‌ساز', images: Array.from({length:13}, (_,i) => `images/atisaz/${i+1}.jpg`) },
     ekbatan: { en: 'Ekbatan', fa: 'اکباتان', images: Array.from({length:16}, (_,i) => `images/ekbatan/Ekbatan (${i+1}).jpg`) },
@@ -231,7 +233,7 @@
     let attempts = 0;
     const tryImage = () => {
       if (attempts >= total) { lightboxImage.alt = 'Image not found in repository'; lightboxCaption.textContent = (document.documentElement.lang === 'fa' ? 'تصویر در مخزن پیدا نشد' : 'Image not found in repository'); return; }
-      const path = activeGallery.images[activeImageIndex];
+      const path = imageUrl(activeGallery.images[activeImageIndex]);
       lightboxImage.onerror = () => { attempts++; activeImageIndex = (activeImageIndex + 1) % total; tryImage(); };
       lightboxImage.onload = () => { lightboxCaption.textContent = `${document.documentElement.lang === 'fa' ? activeGallery.fa : activeGallery.en} · ${activeImageIndex+1} / ${total}`; };
       lightboxImage.src = path;
