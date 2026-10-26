@@ -15,7 +15,20 @@
     a{color:inherit;text-decoration:none}
     button{font:inherit}
     .topbar{position:absolute;top:0;left:0;width:100%;padding:28px 5%;display:flex;align-items:center;justify-content:space-between;z-index:5}
-    .brand{display:flex;align-items:center;gap:15px}.brand-mark{width:48px;height:48px;flex-shrink:0}
+    .brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand-mark {
+  display: block;
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  flex: 0 0 48px;
+}
     .brand-name{font-size:15px;letter-spacing:4px;font-weight:500}.brand-subtitle{margin-top:5px;font-size:10px;letter-spacing:5px;color:var(--muted)}
     .navigation{display:flex;align-items:center;gap:25px;font-size:11px;letter-spacing:1px}.navigation a{transition:color .2s}.navigation a:hover{color:var(--green)}
     .language{padding-left:18px;border-left:1px solid var(--line);white-space:nowrap}.language button{border:0;background:none;padding:0 2px;color:var(--muted);cursor:pointer;font-size:11px}.language button.active{color:var(--green);font-weight:700}
@@ -89,10 +102,11 @@
 <body>
 <header class="topbar">
   <a class="brand" href="#home" aria-label="Mehdi Fatahiye home">
-    <svg class="brand-mark" viewBox="0 0 100 100" role="img" aria-label="Architect logo">
-      <path d="M12 12 H86 V70 H37 L18 91 L27 70 H12 Z" fill="none" stroke="#405b31" stroke-width="7" stroke-linejoin="miter"/>
-      <path d="M28 70 L52 42" fill="none" stroke="#405b31" stroke-width="7"/>
-    </svg>
+    <img
+  class="brand-mark"
+  src="images/logo.png"
+  alt="Mehdi Fatahiye — Architect"
+>
     <div><div class="brand-name">MEHDI FATAHIYE</div><div class="brand-subtitle">ARCHITECT</div></div>
   </a>
   <nav class="navigation" aria-label="Main navigation">
